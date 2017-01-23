@@ -1,0 +1,12 @@
+click==6.7
+Flask==0.12
+Flask-SQLAlchemy==2.1
+geoip2==2.4.2
+itsdangerous==0.24
+Jinja2==2.9.4
+MarkupSafe==0.23
+maxminddb==1.2.3
+requests==2.12.5
+six==1.10.0
+SQLAlchemy==1.1.5
+Werkzeug==0.11.15

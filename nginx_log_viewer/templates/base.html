@@ -1,0 +1,56 @@
+{% macro link_ip(ip) -%}
+  <a href="/ip/{{ ip }}">{{ ip }}</a>
+{%- endmacro %}
+{% macro link_resource(resource) -%}
+  <a href="/resource/?path={{ resource }}">{{ resource }}</a>
+{%- endmacro %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- <link href="static/template.css" rel="stylesheet"> -->
+  </head>
+  <body style="padding-top: 1rem;">
+    <div class="container-fluid">
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        {% if header %}<li><a>{{ header }}</a></li>{% endif %}
+        {% if subheader %}<li class="active">{{ subheader }}</li>{% endif %}
+      </ol>
+      <p>Servertime is now {{ time_now() }}</p>
+      {% if ip_host %}
+      <ul>
+        <li>IP: {{ subheader }}</li>
+        <li>Host: {{ ip_host }}</li>
+        {% if ip_info %}
+        <li>Country: {{ ip_info.country }}</li>
+        <li>State: {{ ip_info.state }}</li>
+        <li>City: {{ ip_info.city }}</li>
+        <li>Zip: {{ ip_info.zip }}</li>
+        <li><a href="http://maps.google.com/?q={{ ip_info.lat }},{{ ip_info.lon }}">Google Maps</a></li>
+        {% endif %}
+      </ul>
+      {% endif %}
+      <p>{{ records | length }} requests found</p>
+      <table class="table table-condensed table-hover">
+        <tbody class="text-nowrap">
+          {% for record in records %}
+          <tr><td>{{ record.time }}</td><td>{{ record.request.method }}</td><td>{{ link_ip(record.ip) }}</td><td>{{ record.bytes_sent | filesizeformat }}</td><td>{{ link_resource(record.request.resource) }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if ip_info %}<p>This product includes GeoLite2 data created by MaxMind, available from
+<a href="http://www.maxmind.com">http://www.maxmind.com</a>.</p>{% endif %}
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
