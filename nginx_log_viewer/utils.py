@@ -16,7 +16,7 @@ def get_args():
     )
     parser.add_argument(
         '-P', '--port', type=int,
-        help='Set web server listening port.', default=5000
+        help='Set web server listening port.', default=8181
     )
     parser.add_argument(
         '-L', '--log-dir', help='Set log file directory.',
