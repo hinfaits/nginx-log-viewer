@@ -24,7 +24,7 @@ def get_args():
     )
     parser.add_argument(
         '-D', '--database', help='Set application database.',
-        default="sqlite:////tmp/nginx_log_viewer.db"
+        default="sqlite://"
     )
     parser.add_argument(
         '-G', '--geo-ip', help='Set geoip db filepath, required for geoip lookup.'

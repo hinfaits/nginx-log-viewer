@@ -1,6 +1,6 @@
 # nginx-log-viewer
 
-**nginx-log-viewer** displays nginx logs over http. All nginx logs are compiled in to a single rich webpage easily filterable by IP or accessed resource.
+**nginx-log-viewer** displays nginx access logs over http. All (uncompressed and gzipped) access logs are compiled in to a single webpage, filterable by IP or accessed resource.
 
 ### Minimal Installation
 These instructions have been tested on Ubuntu 16.04, but should work on any Debian Linux.
