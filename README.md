@@ -21,4 +21,4 @@ Basic GeoIP lookups can be done via [MaxMind](https://dev.maxmind.com/geoip/geoi
 
 ### Caveats
 1. If logs are not in the default nginx format, ```parse_log_line()``` in ```nginx_log_viewer/utils.py``` may require editing. 
-2. The application is designed to be a non-production tool, buyer beware.
+2. The author does not recommend running nginx-log-viewer on the open web as efforts to secure the application have been minimal.
